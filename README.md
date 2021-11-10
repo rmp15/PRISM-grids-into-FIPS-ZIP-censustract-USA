@@ -4,7 +4,10 @@ Work in progress by Robbie M Parks et al.
 
 2018...2022... and beyond
 
-note: 0_00_create_folder_structure.R is in all of the files to create list of file locations.
+Variable:
+
+tmean - mean daily temperature
+ppt - daily precipitation
 
 Contents of project:
 
