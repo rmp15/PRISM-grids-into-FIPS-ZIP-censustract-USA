@@ -1,4 +1,4 @@
-Temperature and other weather variable grids that have been converted to political entities 
+PRISM temperature and other weather variable grids that have been converted to political entities 
 
 Work in progress by Robbie M Parks et al.
 
