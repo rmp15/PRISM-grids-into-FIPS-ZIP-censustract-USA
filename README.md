@@ -1,4 +1,4 @@
-PRISM temperature and other weather variable grids that have been converted to political entities for use in:
+PRISM temperature and other weather variable grids (from https://prism.oregonstate.edu/recent/) that have been converted to political entities for use in:
 
 Parks, R.M., Anderson, G.B., Nethery, R.C. et al. Tropical cyclone exposure is associated with increased hospitalization rates in older adults. Nat Commun 12, 1545 (2021). https://doi.org/10.1038/s41467-021-21777-1
 
