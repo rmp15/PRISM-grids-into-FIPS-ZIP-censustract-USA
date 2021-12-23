@@ -19,7 +19,7 @@ ppt - daily precipitation
 
 Contents of project:
 
-Countries covered (I have other countries in another location):
+Countries covered (I have other countries from ERA5 in another location):
 
 USA 
 
