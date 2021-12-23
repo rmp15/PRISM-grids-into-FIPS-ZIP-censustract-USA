@@ -4,6 +4,8 @@ Parks, R.M., Anderson, G.B., Nethery, R.C. et al. Tropical cyclone exposure is a
 
 Elser H, Parks RM, Moghavem N, Kiang MV, Bozinov N, Henderson VW, Rehkopf DH, Casey JA. (2021). Anomalously warm weather and acute care visits in patients with multiple sclerosis: A retrospective study of privately insured individuals in the US, PLoS Medicine https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1003580
 
+Other papers to be posted here very soon once published.
+
 Work in progress by Robbie M Parks et al.
 
 2018...2022... and beyond
