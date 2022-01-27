@@ -5,7 +5,7 @@
 
 cd $HOME/git/PRISM-grids-into-political-entities-USA/
 module load anaconda3/personal
-R --slave --args ${PBS_ARRAY_INDEX} < $HOME/git/PRISM-grids-into-political-entities-USA/prog/02_grid_county_intersection/grid_county_intersection_raster_prism.R
+R --slave --args ${PBS_ARRAY_INDEX} < $HOME/git/PRISM-grids-into-political-entities-USA/prog/02_grid_county_intersection/grid_county_intersection_raster_prism_medbio.R
 
 # to run type
 # qsub -q med-bio medbio_run.run
