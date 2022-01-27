@@ -13,16 +13,16 @@ rm(list=ls())
 project.folder = paste0(print(here::here()),'/')
 
 library(maptools)
-library(mapproj) #
+library(mapproj)
 library(rgeos)
 library(rgdal)
 library(RColorBrewer)
 library(ggplot2)
-library(raster) #
+library(raster)
 library(sp)
 library(plyr)
-library(graticule) #
-library(zoo) #
+library(graticule)
+library(zoo)
 
 # arguments from Rscript
 args = commandArgs(trailingOnly=TRUE)
