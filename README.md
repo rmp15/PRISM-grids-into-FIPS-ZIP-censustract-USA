@@ -12,7 +12,7 @@ Work in progress by Robbie M Parks et al.
 
 2018...2022... and beyond
 
-Actual output to use found at: 
+Actual output to use found at: output/grid_county_intersection_raster_prism/
 
 Variable:
 
