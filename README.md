@@ -12,6 +12,8 @@ Work in progress by Robbie M Parks et al.
 
 2018...2022... and beyond
 
+Actual output to use found at: 
+
 Variable:
 
 tmean - mean daily temperature\
