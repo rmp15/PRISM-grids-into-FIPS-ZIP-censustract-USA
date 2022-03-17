@@ -30,7 +30,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 # year of interest
 year = as.numeric(args[1])
-dname = 'tmean'
+dname = 'wbgtmax'
 time.res = 'daily'
 space.res = 'fips'
 
@@ -88,11 +88,14 @@ if(time.res=='daily'){
         print(day.month)
 
         # load raster for relevant date
-        raster.full = raster(paste0('~/data/climate/prism/bil/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'1231_bil/PRISM_',dname,'_stable_4kmD2_',year,day.month,'_bil.bil'))
-        raster.full = projectRaster(raster.full, crs=original.proj)
-        
-        if(dname == 'wbgtmax'){ # get rid of huge negative values if it's wbgtmax
-            raster.full = reclassify(raster.full, cbind(-Inf, -1000, NA), right=FALSE)
+        if(dname!='wbgtmax'){
+            raster.full = raster(paste0('~/data/climate/prism/bil/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'1231_bil/PRISM_',dname,'_stable_4kmD2_',year,day.month,'_bil.bil'))
+            raster.full = projectRaster(raster.full, crs=original.proj)
+            }
+        if(dname == 'wbgtmax'){ 
+            raster.full = raster(paste0('~/data/climate/prism/tif/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'1231_tif/PRISM_',dname,'_stable_4kmD2_',year,day.month,'.tif'))
+            raster.full = projectRaster(raster.full, crs=original.proj)
+            raster.full = reclassify(raster.full, cbind(-Inf, -1000, NA), right=FALSE) # get rid of huge negative values if it's wbgtmax
         }
         
         # perform over entire of mainland USA
