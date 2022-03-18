@@ -1,4 +1,4 @@
-PRISM temperature and other weather variable grids (from https://prism.oregonstate.edu/recent/) that have been converted to political entities (county FIPS and ZIP Codes) for use in:
+PRISM temperature, precipitation, wet bulb global tempearture (WBGT) weather variable grids (from https://prism.oregonstate.edu/recent/) that have been converted to political entities (county FIPS and ZIP Codes) for use in:
 
 Parks, R.M., Anderson, G.B., Nethery, R.C. et al. Tropical cyclone exposure is associated with increased hospitalization rates in older adults. Nat Commun 12, 1545 (2021). https://doi.org/10.1038/s41467-021-21777-1
 
@@ -8,7 +8,7 @@ Other papers to be posted here very soon once published.
 
 Currently in RDS from R but will convert to csv. In Python easy to load RDS files (https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas).
 
-Work in progress by Robbie M Parks et al.
+Work in progress by Robbie M Parks et al. WGBT grids provided by Cascade Tuloske. Great to work together!
 
 2018...2022... and beyond
 
