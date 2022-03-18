@@ -12,7 +12,7 @@ Work in progress by Robbie M Parks et al. WGBT grids provided by Cascade Tuloske
 
 2018...2022... and beyond
 
-Actual output to use found at: output/grid_county_intersection_raster_prism/
+Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-political-entities-USA/tree/main/output/grid_county_intersection_raster_prism
 
 Variable:
 
