@@ -17,7 +17,8 @@ Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-politic
 Variable:
 
 tmean - mean daily temperature\
-ppt - daily precipitation
+ppt - daily precipitation\
+wbgt - wet bulb globe temperature
 
 Contents of project:
 
