@@ -35,9 +35,9 @@ fips_wbgt - processing wbgt by FIPS
 
 zips_tmean - processing tmean by ZIP (ZCTA) Code
 
-processing_code.R - does the heavy lifting called in by bash files for either fips or zip
+processing_code.R - does the heavy lifting called in by bash files for either FIPS or ZIP (ZCTA) Code
 
 Output:
 
-fips - fips files by exposure and year\
-zip - zip files by state FIPS, exposure and year
+fips - FIPS output files by exposure and year\
+zip - ZIP (ZCTA) Code output files by state FIPS, exposure and year
