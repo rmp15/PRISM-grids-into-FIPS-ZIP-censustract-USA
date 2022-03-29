@@ -13,9 +13,9 @@ Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-politic
 
 Variable:
 
-tmean - mean daily temperature\
-ppt - daily precipitation\
-wbgtmax - maximum daily wet bulb globe temperature (WBGT)
+tmean - mean daily temperature (°C)\
+ppt - daily precipitation (mm)\
+wbgtmax - maximum daily wet bulb globe temperature (WBGT) (°C)
 
 Contents of project:
 
