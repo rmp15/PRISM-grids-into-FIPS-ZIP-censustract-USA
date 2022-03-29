@@ -1,10 +1,4 @@
-PRISM temperature, precipitation, wet bulb global tempearture (WBGT) weather variable grids (from https://prism.oregonstate.edu/recent/) that have been converted to political entities (county FIPS and ZIP Codes) for use in:
-
-Parks, R.M., Anderson, G.B., Nethery, R.C. et al. Tropical cyclone exposure is associated with increased hospitalization rates in older adults. Nat Commun 12, 1545 (2021). https://doi.org/10.1038/s41467-021-21777-1
-
-Elser H, Parks RM, Moghavem N, Kiang MV, Bozinov N, Henderson VW, Rehkopf DH, Casey JA. (2021). Anomalously warm weather and acute care visits in patients with multiple sclerosis: A retrospective study of privately insured individuals in the US, PLoS Medicine https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1003580
-
-Other papers to be posted here very soon once published.
+PRISM temperature, precipitation, wet bulb global tempearture (WBGT) weather variable grids (from https://prism.oregonstate.edu/recent/) that have been converted to political entities (county FIPS and ZIP (ZCTA) Codes) for use in several papers.
 
 Currently in RDS from R but will convert to csv. In Python easy to load RDS files (https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas).
 
@@ -12,13 +6,13 @@ Work in progress by Robbie M Parks et al. WGBT grids provided by Cascade Tuloske
 
 2018...2022... and beyond
 
-Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-political-entities-USA/tree/main/output/grid_county_intersection_raster_prism
+Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-political-entities-USA/tree/main/output/
 
 Variable:
 
 tmean - mean daily temperature\
 ppt - daily precipitation\
-wbgt - wet bulb globe temperature
+wbgt - wet bulb globe temperature (WBGT)
 
 Contents of project:
 
@@ -28,19 +22,22 @@ USA
 
 Input:
 
-PRISM 4k values
+PRISM 4k values (https://prism.oregonstate.edu/recent/)
 
 Code (prog):
 
-Bash files:
+Actual processing scripts:
 
-grid_county_intersection_prism_fips.sh  - Perform for chosen year by county for each day in chosen year\
-grid_county_intersection_prism_zip.sh   - Perform for chosen year by zip code for each day in chosen year
+02_grid_county_intersection/
 
-Actual processing function:
+fips_tmean - processing tmean by FIPS\
+fips_wbgt - processing wbgt by FIPS
 
-02_grid_county_intersection/grid_county_intersection_raster_prism.R - does the heavy lifting called in by bash files for either fips or zip
+zips_tmean - processing tmean by ZIP (ZCTA) Code
+
+processing_code.R - does the heavy lifting called in by bash files for either fips or zip
 
 Output:
 
-grid_county_intersection_raster_prism - either fips or zip files by year
+fips - fips files by exposure and year\
+zip - zip files by state FIPS, exposure and year
