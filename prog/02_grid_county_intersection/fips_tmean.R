@@ -18,5 +18,6 @@ dname = 'tmean'
 time.res = 'daily'
 space.res = 'fips'
 
+
 # process from grids into shapefiles
 source('prog/02_grid_county_intersection/processing_code.R')
