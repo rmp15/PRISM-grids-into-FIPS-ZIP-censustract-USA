@@ -37,7 +37,7 @@ if(space.res=='zip'){
 }
 if(space.res=='fips'){
     # load shapefile of entire United States from TBD
-    us.national <- readOGR(dsn=paste0(project.folder,"data/shapefiles/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
+    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
     
     # remove non-mainland territories (assuming it's for entire mainland US)
     us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
@@ -54,7 +54,7 @@ if(time.res=='annual'){
 # perform analysis across every day of selected year
 if(time.res=='daily'){
     # loop through each raster file for each day and summarise
-    dates <- seq(as.Date(paste0('0101',year),format="%d%m%Y"), as.Date(paste0('3112',year),format="%d%m%Y"), by=1)
+    dates = seq(as.Date(paste0('0101',year),format="%d%m%Y"), as.Date(paste0('3112',year),format="%d%m%Y"), by=1)
     
     # empty dataframe to load summarised national daily values into
     weighted.area.national.total = data.frame()
@@ -68,8 +68,6 @@ if(time.res=='daily'){
         day = format(as.Date(date), "%d")
         month = format(as.Date(date), "%m")
         day.month = paste0(month,day)
-        
-        print(day.month)
         
         # load raster for relevant date
         if(dname!='wbgtmax'){
@@ -110,11 +108,12 @@ if(time.res=='daily'){
     }
 }
 
+# save output
 if(space.res=='zip'){
     saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_zip_',state,'_',dname,'_',time.res,'_',as.character(year),'.rds'))
     readr::write_csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_zip_',state,'_',dname,'_',time.res,'_',as.character(year),'.csv'))
 }
 if(space.res=='fips'){
     saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'.rds'))
-    readr::write_csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'csv'))
+    readr::write_csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'.csv'))
 }

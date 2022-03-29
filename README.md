@@ -33,7 +33,8 @@ Actual processing scripts:
 fips_tmean - processing tmean by FIPS\
 fips_wbgt - processing wbgt by FIPS
 
-zips_tmean - processing tmean by ZIP (ZCTA) Code
+zips_tmean - processing tmean by ZIP (ZCTA) Code\
+zips_wbgt - processing wbgt by ZIP (ZCTA) Code
 
 processing_code.R - does the heavy lifting called in by bash files for either FIPS or ZIP (ZCTA) Code
 
