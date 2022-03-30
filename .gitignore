@@ -38,6 +38,10 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# wbgt data
+# wbgt processed data
 output/fips/wbgtmax/*
 output/zip/36/wbgtmax/*
+
+# wbgt processed plots
+plots/wbgtmax/*
+
