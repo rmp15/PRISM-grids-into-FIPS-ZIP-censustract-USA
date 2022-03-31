@@ -14,7 +14,6 @@ library(sp)
 library(plyr)
 library(graticule)
 library(zoo)
-library(readr)
 
 # print message detailing what is being processed
 if(space.res=='fips'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
@@ -112,9 +111,11 @@ if(time.res=='daily'){
 # save output
 if(space.res=='zip'){
     saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_zip_',state,'_',dname,'_',time.res,'_',as.character(year),'.rds'))
-    readr::write_csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_zip_',state,'_',dname,'_',time.res,'_',as.character(year),'.csv'))
+    write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_zip_',state,'_',dname,'_',time.res,'_',as.character(year),'.csv'),
+              row.names = F)
 }
 if(space.res=='fips'){
     saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'.rds'))
-    readr::write_csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'.csv'))
+    write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'.csv'),
+                     row.names = F)
 }
