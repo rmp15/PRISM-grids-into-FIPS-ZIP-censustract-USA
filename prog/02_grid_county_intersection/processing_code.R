@@ -14,6 +14,7 @@ library(sp)
 library(plyr)
 library(graticule)
 library(zoo)
+library(readr)
 
 # print message detailing what is being processed
 if(space.res=='fips'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
@@ -24,7 +25,7 @@ dir.output = paste0(project.folder,"output/")
 if(space.res=='zip'){dir.output=paste0(dir.output,'zip/',state,'/')}
 if(space.res=='fips'){dir.output=paste0(dir.output,'fips/')}
 dir.output=paste0(dir.output,dname,'/')
-ifelse(!dir.exists(dir.output), dir.create(dir.output), FALSE)
+ifelse(!dir.exists(dir.output), dir.create(dir.output, recursive = T), FALSE)
 
 # load shapefiles of either ZIP Codes (ZCTAs) or FIPS
 if(space.res=='zip'){
