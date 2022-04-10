@@ -9,7 +9,7 @@ WGBT grids provided by Cascade Tuloske. Great to work together!
 
 2018...2022... and beyond
 
-Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-political-entities-USA/tree/main/output/
+Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output
 
 Variable:
 
