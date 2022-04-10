@@ -2,7 +2,7 @@
 
 PRISM temperature, precipitation, wet bulb global tempearture (WBGT) weather variable grids (from https://prism.oregonstate.edu/recent/) that have been converted to political entities (county FIPS and ZIP (ZCTA) Codes) for use in several papers.
 
-Currently in RDS from R but in process of converting to csv. In Python easy to load RDS files (https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas).
+In RDS from R and also csv. In Python easy to load RDS files (https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas).
 
 Work in progress by Robbie M Parks et al.\ 
 WGBT grids provided by Cascade Tuloske. Great to work together!
