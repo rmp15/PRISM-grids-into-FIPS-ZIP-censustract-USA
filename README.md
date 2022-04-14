@@ -20,7 +20,7 @@ Work in progress by Robbie M Parks.
 
 ### ZIP Code
 
-#### California
+#### California
 
 [Mean daily temperature (tmean; °C) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/zip/06/tmean)
 
@@ -33,12 +33,10 @@ Let me know if you'd like me to run any other specific states, but others slowly
 
 ## Code
 
-fips_tmean - processing tmean by FIPS\
-fips_ppt - processing ppt by FIPS\
-fips_wbgtmax - processing wbgtmax by FIPS
+[fips_tmean.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/fips_tmean.R) - processing tmean by FIPS\
+[fips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/fips_ppt.R) - processing ppt by FIPS\
 
-zips_tmean - processing tmean by ZIP (ZCTA) Code\
-zips_ppt - processing ppt by ZIP (ZCTA) Code\
-zips_wbgtmax - processing wbgtmax by ZIP (ZCTA) Code
+[zips_tmean.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/zips_tmean.R) - processing tmean by ZIP Code\
+[zips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/zips_ppt.R) - processing ppt by ZIP Code\
 
-processing_code.R - does the heavy lifting called in by bash files for either FIPS or ZIP (ZCTA) Code
+[processing_code.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/processing_code.R) - does the heavy lifting called in by bash files for either FIPS or ZIP (ZCTA) Code
