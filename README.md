@@ -1,7 +1,7 @@
 # PRISM data converted into FIPS and ZIP summaries in the USA
 
 ## Introduction 
-[Parameter-elevation Regressions on Independent Slopes Model (PRISM)](https://prism.oregonstate.edu/recent/) temperature, precipitation 4km weather variable grids that have been converted to county FIPS and ZIP Code summaries for use in several papers.
+[Parameter-elevation Regressions on Independent Slopes Model (PRISM)](https://prism.oregonstate.edu/recent/) temperature, precipitation 4km daily weather variable grids that have been converted to county FIPS and ZIP Code summaries for use in several papers.
 
 In RDS from R and also csv. In Python [easy to load RDS files](https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas) and much more compact files than csvs too.
 
@@ -9,17 +9,13 @@ Work in progress by Robbie M Parks.
 
 2018...2022... and beyond.
 
-Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output
 
-Variable:
+## Availavble Variables:
 
 tmean - mean daily temperature (°C)\
-ppt - daily precipitation (mm)\
-wbgtmax - maximum daily wet bulb globe temperature (WBGT) (°C)
+ppt - daily precipitation (mm)
 
-Contents of project:
-
-Input (not in GitHub project):
+## Input (not in GitHub project):
 
 PRISM 4k values (https://prism.oregonstate.edu/recent/)
 
