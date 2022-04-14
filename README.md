@@ -18,27 +18,27 @@ Work in progress by Robbie M Parks.
 ### County FIPS
 
 [Mean daily temperature (tmean; °C) for 1981-2020](output/fips/tmean) \
-[Mean daily precipitation (ppt; mm) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/fips/ppt) 
+[Mean daily precipitation (ppt; mm) for 1981-2020](output/fips/ppt) 
 
 ### ZIP Code
 
 #### California
 
-[Mean daily temperature (tmean; °C) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/zip/06/tmean)
+[Mean daily temperature (tmean; °C) for 1981-2020](output/zip/06/tmean)
 
 #### New York
 
-[Mean daily temperature (tmean; °C) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/zip/36/tmean) \
-[Mean daily precipitation (ppt; mm) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/zip/36/ppt)
+[Mean daily temperature (tmean; °C) for 1981-2020](output/zip/36/tmean) \
+[Mean daily precipitation (ppt; mm) for 1981-2020](output/zip/36/ppt)
 
 Let me know if you'd like me to run any other specific states, but others slowly in progress.
 
 ## Code
 
-[fips_tmean.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/fips_tmean.R) - processing tmean by FIPS\
-[fips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/fips_ppt.R) - processing ppt by FIPS
+[fips_tmean.R](prog/02_grid_county_intersection/fips_tmean.R) - processing tmean by FIPS\
+[fips_ppt.R](prog/02_grid_county_intersection/fips_ppt.R) - processing ppt by FIPS
 
-[zips_tmean.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/zips_tmean.R) - processing tmean by ZIP Code\
-[zips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/zips_ppt.R) - processing ppt by ZIP Code
+[zips_tmean.R](prog/02_grid_county_intersection/zips_tmean.R) - processing tmean by ZIP Code\
+[zips_ppt.R](prog/02_grid_county_intersection/zips_ppt.R) - processing ppt by ZIP Code
 
-[processing_code.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/processing_code.R) - does the heavy lifting called in by bash files for either FIPS or ZIP Code
+[processing_code.R](prog/02_grid_county_intersection/processing_code.R) - does the heavy lifting called in by bash files for either FIPS or ZIP Code
