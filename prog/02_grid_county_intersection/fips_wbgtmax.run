@@ -3,9 +3,9 @@
 #PBS -l select=1:ncpus=4:mem=20gb
 #PBS -J 1982-2018
 
-cd $HOME/git/PRISM-grids-into-political-entities-USA/
+cd $HOME/git/PRISM-grids-into-FIPS-ZIP-USA/
 module load anaconda3/personal
-R --slave --args ${PBS_ARRAY_INDEX} < $HOME/git/PRISM-grids-into-political-entities-USA/prog/02_grid_county_intersection/fips_wbgtmax.R
+R --slave --args ${PBS_ARRAY_INDEX} < $HOME/git/PRISM-grids-into-FIPS-ZIP-USA/prog/02_grid_county_intersection/fips_wbgtmax.R
 
 # to run type
 # qsub -q med-bio fips_wbgtmax.run
