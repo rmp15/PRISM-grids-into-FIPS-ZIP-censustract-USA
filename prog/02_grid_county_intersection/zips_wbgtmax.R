@@ -17,7 +17,7 @@ year = as.numeric(args[1])
 dname = 'wbgtmax'
 time.res = 'daily'
 space.res = 'zip'
-state = '36'
+state = '06'
   
 # process from grids into shapefiles
 source('prog/02_grid_county_intersection/processing_code.R')
