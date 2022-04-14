@@ -20,7 +20,11 @@ Work in progress by Robbie M Parks.
 
 ### ZIP Code
 
-#### New York State
+#### California
+
+[Mean daily temperature (tmean; °C) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/zip/06/tmean)
+
+#### New York
 
 [Mean daily temperature (tmean; °C) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/zip/36/tmean) \
 [Mean daily precipitation (ppt; mm) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/zip/36/ppt)
