@@ -7,6 +7,8 @@ Available for download (see [Data](#Data) below) in [RDS](https://www.r-bloggers
 
 In Python it is [easy to load RDS files](https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas) and much more compact files than csvs too.
 
+Note that ZIP Code throughout is actually [ZIP Code Tablulation Area (ZCTA)](https://en.wikipedia.org/wiki/ZIP_Code_Tabulation_Area), which was developed to overcome the difficulties in precisely defining the land area covered by each ZIP code. Defining the extent of an area is necessary in order to tabulate census data for that area.
+
 Work in progress by Robbie M Parks.
 
 2018...2022... and beyond.
@@ -34,9 +36,9 @@ Let me know if you'd like me to run any other specific states, but others slowly
 ## Code
 
 [fips_tmean.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/fips_tmean.R) - processing tmean by FIPS\
-[fips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/fips_ppt.R) - processing ppt by FIPS\
+[fips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/fips_ppt.R) - processing ppt by FIPS
 
 [zips_tmean.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/zips_tmean.R) - processing tmean by ZIP Code\
-[zips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/zips_ppt.R) - processing ppt by ZIP Code\
+[zips_ppt.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/zips_ppt.R) - processing ppt by ZIP Code
 
-[processing_code.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/processing_code.R) - does the heavy lifting called in by bash files for either FIPS or ZIP (ZCTA) Code
+[processing_code.R](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/blob/main/prog/02_grid_county_intersection/processing_code.R) - does the heavy lifting called in by bash files for either FIPS or ZIP Code
