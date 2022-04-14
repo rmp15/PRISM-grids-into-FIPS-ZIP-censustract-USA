@@ -1,13 +1,13 @@
 # PRISM data converted into FIPS and ZIP summaries in the USA
 
-PRISM temperature, precipitation, wet bulb global tempearture (WBGT) weather variable grids (from https://prism.oregonstate.edu/recent/) that have been converted to political entities (county FIPS and ZIP (ZCTA) Codes) for use in several papers.
+## Introduction 
+[Parameter-elevation Regressions on Independent Slopes Model (PRISM)](https://prism.oregonstate.edu/recent/) temperature, precipitation 4km weather variable grids that have been converted to county FIPS and ZIP Code summaries for use in several papers.
 
-In RDS from R and also csv. In Python easy to load RDS files (https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas).
+In RDS from R and also csv. In Python [easy to load RDS files](https://stackoverflow.com/questions/40996175/loading-a-rds-file-in-pandas) and much more compact files than csvs too.
 
-Work in progress by Robbie M Parks et al.\ 
-WGBT grids provided by Cascade Tuloske. Great to work together!
+Work in progress by Robbie M Parks.
 
-2018...2022... and beyond
+2018...2022... and beyond.
 
 Actual output to use found at: https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output
 
