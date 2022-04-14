@@ -52,3 +52,9 @@ plots/wbgtmax/*
 # RProj file
 *.Rproj
 
+# maps file
+maps/*
+
+# plots file
+plots/*
+
