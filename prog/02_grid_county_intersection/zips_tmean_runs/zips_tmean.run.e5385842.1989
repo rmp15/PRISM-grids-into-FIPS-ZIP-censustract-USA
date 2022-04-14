@@ -1,0 +1,55 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+Loading required package: sp
+Checking rgeos availability: TRUE
+Please note that 'maptools' will be retired by the end of 2023,
+plan transition at your earliest convenience;
+some functionality will be moved to 'sp'.
+Loading required package: maps
+rgeos version: 0.5-2, (SVN revision 621)
+ GEOS runtime version: 3.7.2dev-CAPI-1.11.2 
+ Linking to sp version: 1.3-1 
+ Polygon checking: TRUE 
+
+rgdal: version: 1.4-4, (SVN revision 833)
+ Geospatial Data Abstraction Library extensions to R successfully loaded
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /rds/general/user/rmp15/home/anaconda3/share/gdal
+ GDAL binary built with GEOS: TRUE 
+ Loaded PROJ.4 runtime: Rel. 6.1.0, May 15th, 2019, [PJ_VERSION: 610]
+ Path to PROJ.4 shared files: (autodetected)
+ Linking to sp version: 1.3-1 
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+
+Attaching package: ‘raster’
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+
+Attaching package: ‘plyr’
+
+The following object is masked from ‘package:maps’:
+
+    ozone
+
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Error in gzfile(file, mode) : cannot open the connection
+Calls: source -> withVisible -> eval -> eval -> saveRDS -> gzfile
+In addition: Warning messages:
+1: In dir.create(dir.output) :
+  cannot create dir '/rds/general/user/rmp15/home/git/PRISM-grids-into-political-entities-USA/output/zip/36/tmean', reason 'No such file or directory'
+2: In gzfile(file, mode) :
+  cannot open compressed file '/rds/general/user/rmp15/home/git/PRISM-grids-into-political-entities-USA/output/zip/36/tmean/weighted_area_raster_zip_36_tmean_daily_1989.rds', probable reason 'No such file or directory'
+Execution halted
