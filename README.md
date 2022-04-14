@@ -24,12 +24,12 @@ Work in progress by Robbie M Parks.
 
 #### California
 
-[Mean daily temperature (tmean; °C) for 1981-2020](output/zip/06/tmean) \ 
+[Mean daily temperature (tmean; °C) for 1981-2020](output/zip/06/tmean)\
 [Mean daily precipitation (ppt; mm) for 1981-2020](output/zip/06/ppt)
 
 #### New York
 
-[Mean daily temperature (tmean; °C) for 1981-2020](output/zip/36/tmean) \
+[Mean daily temperature (tmean; °C) for 1981-2020](output/zip/36/tmean)\
 [Mean daily precipitation (ppt; mm) for 1981-2020](output/zip/36/ppt)
 
 Let me know if you'd like me to run any other specific states, but others in progress.
