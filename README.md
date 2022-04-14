@@ -17,7 +17,7 @@ Work in progress by Robbie M Parks.
 
 ### County FIPS
 
-[Mean daily temperature (tmean; °C) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/fips/tmean) \
+[Mean daily temperature (tmean; °C) for 1981-2020](output/fips/tmean) \
 [Mean daily precipitation (ppt; mm) for 1981-2020](https://github.com/rmp15/PRISM-grids-into-FIPS-ZIP-USA/tree/main/output/fips/ppt) 
 
 ### ZIP Code
