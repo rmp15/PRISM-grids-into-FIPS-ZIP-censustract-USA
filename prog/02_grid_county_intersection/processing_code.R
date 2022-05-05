@@ -96,7 +96,7 @@ if(time.res=='daily'){
         # create some unique ids for each area
         if(space.res=='fips'){weighted.area.national = data.frame(code=paste0(us.main$STATEFP,us.main$COUNTYFP), weighted.area.national[,2])}
         if(space.res=='zip'){weighted.area.national = data.frame(code=us.main$ZCTA5CE00, weighted.area.national[,2])}
-        if(space.res=='ct'){weighted.area.national = data.frame(code=us.main$TRACTCE, weighted.area.national[,2])}
+        if(space.res=='ct'){weighted.area.national = data.frame(code=us.main$GEOID, weighted.area.national[,2])}
 
         # order by the unique id area code
         weighted.area.national = weighted.area.national[order(weighted.area.national$code),]
@@ -107,6 +107,7 @@ if(time.res=='daily'){
         # fix column names
         if(space.res=='fips'){names(weighted.area.national) = c('fips',dname)}
         if(space.res=='zip'){names(weighted.area.national) = c('zcta',dname)}
+        if(space.res=='ct'){names(weighted.area.national) = c('ct_id',dname)} # TBC
         
         # add date details
         weighted.area.national$date = format(as.Date(date), "%d/%m/%Y")
@@ -129,4 +130,9 @@ if(space.res=='fips'){
     saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'.rds'))
     write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year),'.csv'),
                      row.names = F)
+}
+if(space.res=='ct'){
+    saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_census_tract_',dname,'_',time.res,'_',as.character(year),'.rds'))
+    write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_census_tract_',dname,'_',time.res,'_',as.character(year),'.csv'),
+              row.names = F)
 }
