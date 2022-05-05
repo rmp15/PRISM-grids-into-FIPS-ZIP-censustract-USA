@@ -9,6 +9,8 @@ In Python it is [easy to load RDS files](https://stackoverflow.com/questions/409
 
 Note that ZIP Code throughout is actually [ZIP Code Tablulation Area (ZCTA)](https://en.wikipedia.org/wiki/ZIP_Code_Tabulation_Area), which was developed to overcome the difficulties in precisely defining the land area covered by each ZIP Code. Defining the extent of an area is necessary in order to tabulate census data for that area.
 
+Testing out [Census Tracts](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Census+Tracts) too...
+
 Work in progress by Robbie M Parks.
 
 2018...2022... and beyond.

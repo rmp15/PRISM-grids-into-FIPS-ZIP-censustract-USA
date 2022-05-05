@@ -18,15 +18,24 @@ library(zoo)
 # print message detailing what is being processed
 if(space.res=='fips'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
 if(space.res=='zip'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res, ' ', state))}
+if(space.res=='ct'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res, ' ', state))}
 
 # create directory to place output files into
 dir.output = paste0(project.folder,"output/")
 if(space.res=='zip'){dir.output=paste0(dir.output,'zip/',state,'/')}
 if(space.res=='fips'){dir.output=paste0(dir.output,'fips/')}
+if(space.res=='ct'){dir.output=paste0(dir.output,'ct/')}
 dir.output=paste0(dir.output,dname,'/')
 ifelse(!dir.exists(dir.output), dir.create(dir.output, recursive = T), FALSE)
 
-# load shapefiles of either ZIP Codes (ZCTAs) or FIPS
+# load shapefiles of either FIPS or ZIP Codes (ZCTAs) or Census Tracts
+if(space.res=='fips'){
+    # load shapefile of entire United States from TBD
+    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
+    
+    # remove non-mainland territories (assuming it's for entire mainland US)
+    us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
+}
 if(space.res=='zip'){
     # load shapefile (just one state at a time) from TBD
     us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/zips/tl_2010_',state,'_zcta500'),layer=paste0('tl_2010_',state,'_zcta500'))
@@ -35,12 +44,13 @@ if(space.res=='zip'){
     
     us.main = us.national
 }
-if(space.res=='fips'){
-    # load shapefile of entire United States from TBD
-    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
+if(space.res=='ct'){
+    # load shapefile (just one state at a time) from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Census+Tracts
+    us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/ct/tl_2021_',state,'_tract'),layer=paste0('tl_2021_',state,'_tract'))
+    # us.national$STATEFP = us.national$STATEFP00
+    us.national = us.national[us.national$STATEFP %in% c(state),]
     
-    # remove non-mainland territories (assuming it's for entire mainland US)
-    us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
+    us.main = us.national
 }
 
 # get projection of shapefile
@@ -80,12 +90,13 @@ if(time.res=='daily'){
             raster.full = reclassify(raster.full, cbind(-Inf, -1000, NA), right=FALSE) # get rid of huge negative values if it's wbgtmax
         }
         
-        # perform over entire of mainland USA (FIPS) or chosen state (ZIP)
+        # perform over entire of mainland USA (FIPS) or chosen state (ZIP or CENSUS TRACT)
         weighted.area.national  = extract(x=raster.full,weights = TRUE, normalizeWeights=TRUE,y=us.main,fun=mean,df=TRUE,na.rm=TRUE)
         
         # create some unique ids for each area
         if(space.res=='fips'){weighted.area.national = data.frame(code=paste0(us.main$STATEFP,us.main$COUNTYFP), weighted.area.national[,2])}
         if(space.res=='zip'){weighted.area.national = data.frame(code=us.main$ZCTA5CE00, weighted.area.national[,2])}
+        if(space.res=='ct'){weighted.area.national = data.frame(code=us.main$TRACTCE, weighted.area.national[,2])}
 
         # order by the unique id area code
         weighted.area.national = weighted.area.national[order(weighted.area.national$code),]
