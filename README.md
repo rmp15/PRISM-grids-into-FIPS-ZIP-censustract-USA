@@ -38,6 +38,10 @@ Work in progress by Robbie M Parks.
 
 Let me know if you'd like me to run any other specific states, but others in progress.
 
+### Census tracts
+
+Watch this space...
+
 ## Code
 
 [fips_tmean.R](prog/02_grid_county_intersection/fips_tmean.R) - processing tmean by FIPS\
