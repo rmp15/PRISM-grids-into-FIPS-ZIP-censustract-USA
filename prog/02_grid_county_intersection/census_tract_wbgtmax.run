@@ -1,7 +1,7 @@
 #!/bin/sh
-#PBS -l walltime=48:00:00
+#PBS -l walltime=96:00:00
 #PBS -l select=1:ncpus=4:mem=20gb
-#PBS -J 1982-2018
+#PBS -J 1-1911
 
 cd $HOME/git/PRISM-grids-into-FIPS-ZIP-USA/
 module load anaconda3/personal
