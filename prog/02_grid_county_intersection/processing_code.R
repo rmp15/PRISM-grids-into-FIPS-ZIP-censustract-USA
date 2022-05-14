@@ -54,7 +54,7 @@ if(space.res=='ct'){
 }
 
 # get projection of shapefile
-original.proj = proj4string(us.national)
+original.proj = proj4string(us.main)
 
 # load raster and make same projection as zip code map
 if(time.res=='annual'){

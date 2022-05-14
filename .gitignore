@@ -58,3 +58,16 @@ maps/*
 # plots file
 plots/*
 
+# data files which aren't relevant
+data/lon_lat/*
+data/shapefiles/state/*
+data/shapefiles/zips/Popular_Demographics_in_the_United_States/*
+data/shapefiles/zz_legacy/*
+
+# prog files which aren't relevant
+prog/01_bash/*
+prog/03_check_output/*
+
+
+
+
