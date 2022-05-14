@@ -17,7 +17,9 @@ Work in progress by Robbie M Parks.
 
 ## Data
 
-### County FIPS (entire USA)
+### County FIPS
+
+#### Entire mainland USA
 
 [Mean daily temperature (tmean; °C) for 1981-2020](output/fips/tmean) \
 [Mean daily precipitation (ppt; mm) for 1981-2020](output/fips/ppt) 
