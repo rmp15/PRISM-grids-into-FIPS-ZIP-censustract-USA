@@ -37,7 +37,7 @@ if(space.res=='fips'){
     us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
 }
 if(space.res=='zip'){
-    # load shapefile (just one state at a time) from TBD
+    # load shapefile (just one state at a time) from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=ZIP+Code+Tabulation+Areas
     us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/zips/tl_2010_',state,'_zcta500'),layer=paste0('tl_2010_',state,'_zcta500'))
     us.national$STATEFP = us.national$STATEFP00 ; us.national$STATEFP00 = NULL
     us.national = us.national[us.national$STATEFP %in% c(state),]
