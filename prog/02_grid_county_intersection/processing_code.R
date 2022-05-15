@@ -24,21 +24,21 @@ if(space.res=='ct'){print(paste0('processing ',year, ' ' , dname, ' ', time.res,
 dir.output = paste0(project.folder,"output/")
 if(space.res=='zip'){dir.output=paste0(dir.output,'zip/',state,'/')}
 if(space.res=='fips'){dir.output=paste0(dir.output,'fips/')}
-if(space.res=='ct'){dir.output=paste0(dir.output,'ct/')}
+if(space.res=='ct'){dir.output=paste0(dir.output,'ct/',state,'/')}
 dir.output=paste0(dir.output,dname,'/')
 ifelse(!dir.exists(dir.output), dir.create(dir.output, recursive = T), FALSE)
 
 # load shapefiles of either FIPS or ZIP Codes (ZCTAs) or Census Tracts
 if(space.res=='fips'){
-    # load shapefile of entire United States from TBD
-    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
+    # load shapefile of entire United States from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Counties+%28and+equivalent%29
+    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k") # TO UPDATE TO 2021
     
     # remove non-mainland territories (assuming it's for entire mainland US)
     us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
 }
 if(space.res=='zip'){
     # load shapefile (just one state at a time) from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=ZIP+Code+Tabulation+Areas
-    us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/zips/tl_2010_',state,'_zcta500'),layer=paste0('tl_2010_',state,'_zcta500'))
+    us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/zips/tl_2010_',state,'_zcta500'),layer=paste0('tl_2010_',state,'_zcta500')) # TO UPDATE TO 2021
     us.national$STATEFP = us.national$STATEFP00 ; us.national$STATEFP00 = NULL
     us.national = us.national[us.national$STATEFP %in% c(state),]
     
