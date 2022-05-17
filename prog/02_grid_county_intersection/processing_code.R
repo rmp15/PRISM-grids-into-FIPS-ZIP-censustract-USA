@@ -37,17 +37,50 @@ if(space.res=='fips'){
     us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
 }
 if(space.res=='zip'){
-    # load shapefile (just one state at a time) from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=ZIP+Code+Tabulation+Areas
-    us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/zips/tl_2010_',state,'_zcta500'),layer=paste0('tl_2010_',state,'_zcta500')) # TO UPDATE TO 2021
+    
+    # load zcta by state from https://www2.census.gov/geo/tiger/TIGER2010/ZCTA5/2010/?C=D;O=A
+    us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/zips/tl_2010_',state,'_zcta510'),layer=paste0('tl_2010_',state,'_zcta510'))
     us.national$STATEFP = us.national$STATEFP00 ; us.national$STATEFP00 = NULL
     us.national = us.national[us.national$STATEFP %in% c(state),]
+    
+    # OLD CODE previously in development but stalled
+    skip=1; if(skip==0){
+        # load shapefile (just one state at a time) from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=ZIP+Code+Tabulation+Areas
+        us.national = readOGR(dsn=paste0('~/data/climate/prism/shapefiles/tl_2021_us_zcta520'),layer=paste0('tl_2021_us_zcta520'))
+        
+        # load zip fips lookup to obtain state fips https://www.huduser.gov/portal/datasets/usps_crosswalk.html
+        zip.fips.lookup = read.csv('~/data/climate/prism/shapefiles/ZIP_COUNTY_122021.csv',colClasses='character')[,c(1:2)]
+        # manual addendum for unmatching values based on https://www.zipdatamaps.com/
+        zip.fips.lookup.addendum = read.csv('~/data/climate/prism/shapefiles/ZIP_COUNTY_122021_addendum.csv',colClasses='character')[,c(1:2)]
+        zip.fips.lookup = rbind(zip.fips.lookup,zip.fips.lookup.addendum)
+        
+        # join zip codes to county codes and extract state fips
+        us.national.data = dplyr::left_join(us.national@data,zip.fips.lookup, by=c('ZCTA5CE20'='zip'))
+        us.national.data$STATEFP = substr(us.national.data$county,1,2)
+        us.national.data.zips = subset(us.national.data, STATEFP %in% c(state))$ZCTA5CE20
+        
+        # attach data with state FIPS back into shapefile 
+        # us.national@data = us.national.data
+        
+        # what are the zip codes which do not match to a FIPs (and hence a state FIPS code?) and optional saving below
+        # us.national.data.na <- as.data.frame(us.national.data[is.na(us.national.data$STATEFP),][,c('ZCTA5CE20')])
+        # names(us.national.data.na) = 'zip'
+        # write.csv(us.national.data.na, '~/data/climate/prism/shapefiles/ZIP_COUNTY_122021_addendum.csv',row.names = F) 
+    }
+    
+    # OLD CODE previously in development but stalled
+    skip=1; if(skip==0){
+    # us.national = subset(us.national, ZCTA5CE20 %in% us.national.data.zips)
+    
+    # load shapefile for all ZIP Codes in US from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=ZIP+Code+Tabulation+Areas
+    # us.national = readOGR(dsn=paste0('~/data/climate/prism/shapefiles/tl_2021_us_zcta520'),layer=paste0('tl_2021_us_zcta520'))
+    }
     
     us.main = us.national
 }
 if(space.res=='ct'){
     # load shapefile (just one state at a time) from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Census+Tracts
     us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/ct/tl_2021_',state,'_tract'),layer=paste0('tl_2021_',state,'_tract'))
-    # us.national$STATEFP = us.national$STATEFP00
     us.national = us.national[us.national$STATEFP %in% c(state),]
     
     us.main = us.national
@@ -90,7 +123,7 @@ if(time.res=='daily'){
             raster.full = reclassify(raster.full, cbind(-Inf, -1000, NA), right=FALSE) # get rid of huge negative values if it's wbgtmax
         }
         
-        # perform over entire of mainland USA (FIPS) or chosen state (ZIP or CENSUS TRACT)
+        # perform over entire of mainland USA (FIPS or ZIP) or chosen state (CENSUS TRACT)
         weighted.area.national  = extract(x=raster.full,weights = TRUE, normalizeWeights=TRUE,y=us.main,fun=mean,df=TRUE,na.rm=TRUE)
         
         # create some unique ids for each area
@@ -107,7 +140,7 @@ if(time.res=='daily'){
         # fix column names
         if(space.res=='fips'){names(weighted.area.national) = c('fips',dname)}
         if(space.res=='zip'){names(weighted.area.national) = c('zcta',dname)}
-        if(space.res=='ct'){names(weighted.area.national) = c('ct_id',dname)} # TBC
+        if(space.res=='ct'){names(weighted.area.national) = c('ct_id',dname)}
         
         # add date details
         weighted.area.national$date = format(as.Date(date), "%d/%m/%Y")
