@@ -9,15 +9,24 @@
 
 rm(list=ls())
 
+# declare root directory, folder locations and load essential stuff
+project.folder = paste0(print(here::here()),'/')
+
 # arguments from Rscript
-args = commandArgs(trailingOnly=TRUE)
+args <- commandArgs(trailingOnly=TRUE)
+seed.arg <- as.numeric(args[1])
+
+# create grid of years an countries
+source(paste0(project.folder,'data/objects/objects.R'))
+seed.grid = expand.grid(year=years_total_wbgt,state=states)
+chosen.row <- seed.grid[seed.arg,]
 
 # year of interest
-year = as.numeric(args[1])
+year = as.numeric(chosen.row[1,1])
 dname = 'wbgtmax'
 time.res = 'daily'
 space.res = 'zip'
-state = '06'
-  
+state = as.character(chosen.row[1,2])
+
 # process from grids into shapefiles
 source('prog/02_grid_county_intersection/processing_code.R')

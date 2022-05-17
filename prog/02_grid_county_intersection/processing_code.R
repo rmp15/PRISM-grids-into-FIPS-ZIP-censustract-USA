@@ -40,7 +40,7 @@ if(space.res=='zip'){
     
     # load zcta by state from https://www2.census.gov/geo/tiger/TIGER2010/ZCTA5/2010/?C=D;O=A
     us.national = readOGR(dsn=paste0(project.folder,'data/shapefiles/zips/tl_2010_',state,'_zcta510'),layer=paste0('tl_2010_',state,'_zcta510'))
-    us.national$STATEFP = us.national$STATEFP00 ; us.national$STATEFP00 = NULL
+    us.national$STATEFP = us.national$STATEFP10 ; us.national$STATEFP10 = NULL
     us.national = us.national[us.national$STATEFP %in% c(state),]
     
     # OLD CODE previously in development but stalled
@@ -128,7 +128,7 @@ if(time.res=='daily'){
         
         # create some unique ids for each area
         if(space.res=='fips'){weighted.area.national = data.frame(code=paste0(us.main$STATEFP,us.main$COUNTYFP), weighted.area.national[,2])}
-        if(space.res=='zip'){weighted.area.national = data.frame(code=us.main$ZCTA5CE00, weighted.area.national[,2])}
+        if(space.res=='zip'){weighted.area.national = data.frame(code=us.main$ZCTA5CE10, weighted.area.national[,2])}
         if(space.res=='ct'){weighted.area.national = data.frame(code=us.main$GEOID, weighted.area.national[,2])}
 
         # order by the unique id area code
