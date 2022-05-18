@@ -1,0 +1,24 @@
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "processing 2020 tmean daily ct 22"
+OGR data source with driver: ESRI Shapefile 
+Source: "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA/data/shapefiles/ct/tl_2021_22_tract", layer: "tl_2021_22_tract"
+with 1388 features
+It has 12 fields
+Integer64 fields read as strings:  ALAND AWATER 
+[1] "Processing dates in 2020"
+[1] "01/01/2020"
+[1] "02/01/2020"
+[1] "03/01/2020"
+[1] "04/01/2020"
+[1] "05/01/2020"
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        20             4
+ Used       :         0 (peak)   0.94 (ave)
+
+============================================

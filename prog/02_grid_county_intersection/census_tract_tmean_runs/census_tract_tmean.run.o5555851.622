@@ -1,0 +1,46 @@
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "processing 2002 tmean daily ct 21"
+OGR data source with driver: ESRI Shapefile 
+Source: "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA/data/shapefiles/ct/tl_2021_21_tract", layer: "tl_2021_21_tract"
+with 1306 features
+It has 12 fields
+Integer64 fields read as strings:  ALAND AWATER 
+[1] "Processing dates in 2002"
+[1] "01/01/2002"
+[1] "02/01/2002"
+[1] "03/01/2002"
+[1] "04/01/2002"
+[1] "05/01/2002"
+[1] "06/01/2002"
+[1] "07/01/2002"
+[1] "08/01/2002"
+[1] "09/01/2002"
+[1] "10/01/2002"
+[1] "11/01/2002"
+[1] "12/01/2002"
+[1] "13/01/2002"
+[1] "14/01/2002"
+[1] "15/01/2002"
+[1] "16/01/2002"
+[1] "17/01/2002"
+[1] "18/01/2002"
+[1] "19/01/2002"
+[1] "20/01/2002"
+[1] "21/01/2002"
+[1] "22/01/2002"
+[1] "23/01/2002"
+[1] "24/01/2002"
+[1] "25/01/2002"
+[1] "26/01/2002"
+[1] "27/01/2002"
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        20             4
+ Used       :         0 (peak)   0.98 (ave)
+
+============================================
