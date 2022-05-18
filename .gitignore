@@ -42,10 +42,6 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# wbgt processed data
-output/fips/wbgtmax/*
-output/zip/36/wbgtmax/*
-
 # wbgt processed plots
 plots/wbgtmax/*
 
@@ -67,6 +63,12 @@ data/shapefiles/zz_legacy/*
 # prog files which aren't relevant
 prog/01_bash/*
 prog/03_check_output/*
+
+# wbgt processed data
+**/wbgtmax
+
+# ct processed csvs
+output/ct/*.csv
 
 
 
