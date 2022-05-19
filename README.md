@@ -15,7 +15,7 @@ Work in progress by Robbie M Parks.
 
 ## Data (covers 1981-2020)
 
-### County FIPS
+### County (FIPS) (using [shapefiles](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Counties+%28and+equivalent%29))
 
 #### Mean daily temperature (tmean; °C) 
 
@@ -25,7 +25,7 @@ Work in progress by Robbie M Parks.
 
 [Entire mainland USA](output/fips/ppt) 
 
-### ZIP Code (2010 ZCTA)
+### ZIP Code (ZCTAs) (using [shapefiles](https://www2.census.gov/geo/tiger/TIGER2010/ZCTA5/2010/?C=D;O=A))
 
 #### Mean daily temperature (tmean; °C) 
 
@@ -129,7 +129,7 @@ Work in progress by Robbie M Parks.
 [Wisconsin](output/zip/55/ppt),
 [Wyoming](output/zip/56/ppt).
 
-### Census Tracts
+### Census tracts (using [shapefiles](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Census+Tracts))
 
 #### Mean daily temperature (tmean; °C) 
 
