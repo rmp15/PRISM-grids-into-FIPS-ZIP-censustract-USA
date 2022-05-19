@@ -13,9 +13,9 @@ Work in progress by Robbie M Parks.
 
 2018...2022... and beyond.
 
-## Data
+## Data (covers 1981-2020)
 
-### County FIPS (1981-2020)
+### County FIPS
 
 #### Mean daily temperature (tmean; °C) 
 
@@ -25,7 +25,7 @@ Work in progress by Robbie M Parks.
 
 [Entire mainland USA](output/fips/ppt) 
 
-### ZIP Code (1981-2020)
+### ZIP Code
 
 #### Mean daily temperature (tmean; °C) 
 
@@ -129,9 +129,7 @@ Work in progress by Robbie M Parks.
 [Wisconsin](output/zip/55/ppt),
 [Wyoming](output/zip/56/ppt).
 
-### Census tracts
-
-### Census Tracts (1981-2020)
+### Census Tracts
 
 #### Mean daily temperature (tmean; °C) 
 
@@ -234,8 +232,6 @@ Work in progress by Robbie M Parks.
 [West Virginia](output/ct/54/ppt),
 [Wisconsin](output/ct/55/ppt),
 [Wyoming](output/ct/56/ppt).
-![image](https://user-images.githubusercontent.com/16194042/169307087-f56b1948-3397-4dcb-bb20-4e20937ff98e.png)
-
 
 ## Code
 
@@ -244,5 +240,8 @@ Work in progress by Robbie M Parks.
 
 [zips_tmean.R](prog/02_grid_county_intersection/zips_tmean.R) - processing tmean by ZIP Code\
 [zips_ppt.R](prog/02_grid_county_intersection/zips_ppt.R) - processing ppt by ZIP Code
+
+[ct_tmean.R](prog/02_grid_county_intersection/ct_tmean.R) - processing tmean by census tract\
+[ct_ppt.R](prog/02_grid_county_intersection/ct_ppt.R) - processing ppt by census tract
 
 [processing_code.R](prog/02_grid_county_intersection/processing_code.R) - does the heavy lifting called in by bash files for either FIPS or ZIP Code
