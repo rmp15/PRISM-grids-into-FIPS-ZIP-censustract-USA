@@ -1,0 +1,25 @@
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "processing 1991 tmean daily zip 17"
+OGR data source with driver: ESRI Shapefile 
+Source: "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA/data/shapefiles/zips/tl_2010_17_zcta510", layer: "tl_2010_17_zcta510"
+with 1384 features
+It has 11 fields
+Integer64 fields read as strings:  ALAND10 AWATER10 
+[1] "Processing dates in 1991"
+[1] "01/01/1991"
+[1] "02/01/1991"
+[1] "03/01/1991"
+[1] "04/01/1991"
+[1] "05/01/1991"
+[1] "06/01/1991"
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        20             4
+ Used       :         0 (peak)   0.99 (ave)
+
+============================================

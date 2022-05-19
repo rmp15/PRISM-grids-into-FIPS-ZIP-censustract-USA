@@ -1,0 +1,33 @@
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA"
+[1] "processing 2004 tmean daily zip 05"
+OGR data source with driver: ESRI Shapefile 
+Source: "/rds/general/user/rmp15/home/git/PRISM-grids-into-FIPS-ZIP-USA/data/shapefiles/zips/tl_2010_05_zcta510", layer: "tl_2010_05_zcta510"
+with 596 features
+It has 11 fields
+Integer64 fields read as strings:  ALAND10 AWATER10 
+[1] "Processing dates in 2004"
+[1] "01/01/2004"
+[1] "02/01/2004"
+[1] "03/01/2004"
+[1] "04/01/2004"
+[1] "05/01/2004"
+[1] "06/01/2004"
+[1] "07/01/2004"
+[1] "08/01/2004"
+[1] "09/01/2004"
+[1] "10/01/2004"
+[1] "11/01/2004"
+[1] "12/01/2004"
+[1] "13/01/2004"
+[1] "14/01/2004"
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        20             4
+ Used       :         0 (peak)   0.79 (ave)
+
+============================================

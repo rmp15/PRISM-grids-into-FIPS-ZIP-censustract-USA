@@ -1,0 +1,12 @@
+#!/bin/sh
+#PBS -l walltime=96:00:00
+#PBS -l select=1:ncpus=4:mem=20gb
+#PBS -J 1-1960
+
+cd $HOME/git/PRISM-grids-into-FIPS-ZIP-USA/
+module load anaconda3/personal
+R --slave --args ${PBS_ARRAY_INDEX} < $HOME/git/PRISM-grids-into-FIPS-ZIP-USA/prog/02_grid_county_intersection/zips_wbgtmax.R
+
+# to run type
+# qsub -q med-bio zips_wbgtmax.run
+# THIS WILL RUN ALL CHOSEN YEARS FOR PRISM PROCESSING
