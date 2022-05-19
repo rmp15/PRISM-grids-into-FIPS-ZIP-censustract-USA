@@ -1,7 +1,7 @@
-# PRISM data converted into FIPS and ZIP summaries in the USA
+# PRISM data converted into FIPS, ZIP Code, and census tract summaries in the USA
 
 ## Introduction:
-[Parameter-elevation Regressions on Independent Slopes Model (PRISM)](https://prism.oregonstate.edu/recent/) by PRISM Climate group Oregon State temperature, precipitation 4km daily weather variable grids that I have converted to daily county FIPS and ZIP Code summaries for use in several papers.
+[Parameter-elevation Regressions on Independent Slopes Model (PRISM)](https://prism.oregonstate.edu/recent/) by PRISM Climate group Oregon State temperature, precipitation 4km daily weather variable grids that I have converted to daily county FIPS, ZIP Code, and census tract summaries for use in several papers.
 
 Available for download (see [Data](#Data) below) in [RDS](https://www.r-bloggers.com/2016/12/remember-to-use-the-rds-format/) (compact) format. csv available on request.
 
@@ -9,11 +9,13 @@ In Python it is [easy to load RDS files](https://stackoverflow.com/questions/409
 
 Note that ZIP Code throughout is actually [ZIP Code Tablulation Area (ZCTA)](https://en.wikipedia.org/wiki/ZIP_Code_Tabulation_Area), which was developed to overcome the difficulties in precisely defining the land area covered by each ZIP Code. Defining the extent of an area is necessary in order to tabulate census data for that area.
 
+Current data covers during 1981-2020.
+
 Work in progress by Robbie M Parks.
 
 2018...2022... and beyond.
 
-## Data (covers 1981-2020)
+## Data
 
 ### County (FIPS) (using [shapefiles](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Counties+%28and+equivalent%29))
 
