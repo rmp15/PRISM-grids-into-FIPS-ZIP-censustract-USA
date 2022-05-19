@@ -25,7 +25,7 @@ Work in progress by Robbie M Parks.
 
 [Entire mainland USA](output/fips/ppt) 
 
-### ZIP Code
+### ZIP Code (2010 ZCTA)
 
 #### Mean daily temperature (tmean; °C) 
 
