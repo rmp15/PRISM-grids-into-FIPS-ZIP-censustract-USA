@@ -9,8 +9,6 @@ In Python it is [easy to load RDS files](https://stackoverflow.com/questions/409
 
 Note that ZIP Code throughout is actually [ZIP Code Tablulation Area (ZCTA)](https://en.wikipedia.org/wiki/ZIP_Code_Tabulation_Area), which was developed to overcome the difficulties in precisely defining the land area covered by each ZIP Code. Defining the extent of an area is necessary in order to tabulate census data for that area.
 
-Testing out [Census Tracts](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Census+Tracts) too...
-
 Work in progress by Robbie M Parks.
 
 2018...2022... and beyond.
@@ -133,7 +131,111 @@ Work in progress by Robbie M Parks.
 
 ### Census tracts
 
-Watch this space...
+### Census Tracts (1981-2020)
+
+#### Mean daily temperature (tmean; °C) 
+
+[Alabama](output/ct/01/tmean),
+[Arizona](output/ct/04/tmean),
+[Arkansas](output/ct/05/tmean),
+[California](output/ct/06/tmean),
+[Colorado](output/ct/08/tmean),
+[Connecticut](output/ct/09/tmean),
+[Delaware](output/ct/10/tmean),
+[Florida](output/ct/12/tmean),
+[Georgia](output/ct/13/tmean),
+[Idaho](output/ct/16/tmean),
+[Illinois](output/ct/17/tmean),
+[Indiana](output/ct/18/tmean),
+[Iowa](output/ct/19/tmean),
+[Kansas](output/ct/20/tmean),
+[Kentucky](output/ct/21/tmean),
+[Louisiana](output/ct/22/tmean),
+[Maine](output/ct/23/tmean),
+[Maryland](output/ct/24/tmean),
+[Massachusetts](output/ct/25/tmean),
+[Michigan](output/ct/26/tmean),
+[Minnesota](output/ct/27/tmean),
+[Mississippi](output/ct/28/tmean),
+[Missouri](output/ct/29/tmean),
+[Montana](output/ct/30/tmean),
+[Nebraska](output/ct/31/tmean),
+[Nevada](output/ct/32/tmean),
+[New Hampshire](output/ct/33/tmean),
+[New Jersey](output/ct/34/tmean),
+[New Mexico](output/ct/35/tmean),
+[New York](output/ct/36/tmean),
+[North Carolina](output/ct/37/tmean),
+[North Dakota](output/ct/38/tmean),
+[Ohio](output/ct/39/tmean),
+[Oklahoma](output/ct/40/tmean),
+[Oregon](output/ct/41/tmean),
+[Pennsylvania](output/ct/42/tmean),
+[Rhode Island](output/ct/44/tmean),
+[South Carolina](output/ct/45/tmean),
+[South Dakota](output/ct/46/tmean),
+[Tennessee](output/ct/47/tmean),
+[Texas](output/ct/48/tmean),
+[Utah](output/ct/49/tmean),
+[Vermont](output/ct/50/tmean),
+[Virginia](output/ct/51/tmean),
+[Washington](output/ct/53/tmean),
+[West Virginia](output/ct/54/tmean),
+[Wisconsin](output/ct/55/tmean),
+[Wyoming](output/ct/56/tmean).
+
+#### Total daily precipitation (ppt; mm)
+
+[Alabama](output/ct/01/ppt),
+[Arizona](output/ct/04/ppt),
+[Arkansas](output/ct/05/ppt),
+[California](output/ct/06/ppt),
+[Colorado](output/ct/08/ppt),
+[Connecticut](output/ct/09/ppt),
+[Delaware](output/ct/10/ppt),
+[Florida](output/ct/12/ppt),
+[Georgia](output/ct/13/ppt),
+[Idaho](output/ct/16/ppt),
+[Illinois](output/ct/17/ppt),
+[Indiana](output/ct/18/ppt),
+[Iowa](output/ct/19/ppt),
+[Kansas](output/ct/20/ppt),
+[Kentucky](output/ct/21/ppt),
+[Louisiana](output/ct/22/ppt),
+[Maine](output/ct/23/ppt),
+[Maryland](output/ct/24/ppt),
+[Massachusetts](output/ct/25/ppt),
+[Michigan](output/ct/26/ppt),
+[Minnesota](output/ct/27/ppt),
+[Mississippi](output/ct/28/ppt),
+[Missouri](output/ct/29/ppt),
+[Montana](output/ct/30/ppt),
+[Nebraska](output/ct/31/ppt),
+[Nevada](output/ct/32/ppt),
+[New Hampshire](output/ct/33/ppt),
+[New Jersey](output/ct/34/ppt),
+[New Mexico](output/ct/35/ppt),
+[New York](output/ct/36/ppt),
+[North Carolina](output/ct/37/ppt),
+[North Dakota](output/ct/38/ppt),
+[Ohio](output/ct/39/ppt),
+[Oklahoma](output/ct/40/ppt),
+[Oregon](output/ct/41/ppt),
+[Pennsylvania](output/ct/42/ppt),
+[Rhode Island](output/ct/44/ppt),
+[South Carolina](output/ct/45/ppt),
+[South Dakota](output/ct/46/ppt),
+[Tennessee](output/ct/47/ppt),
+[Texas](output/ct/48/ppt),
+[Utah](output/ct/49/ppt),
+[Vermont](output/ct/50/ppt),
+[Virginia](output/ct/51/ppt),
+[Washington](output/ct/53/ppt),
+[West Virginia](output/ct/54/ppt),
+[Wisconsin](output/ct/55/ppt),
+[Wyoming](output/ct/56/ppt).
+![image](https://user-images.githubusercontent.com/16194042/169307087-f56b1948-3397-4dcb-bb20-4e20937ff98e.png)
+
 
 ## Code
 
