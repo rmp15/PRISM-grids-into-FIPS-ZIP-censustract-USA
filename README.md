@@ -241,7 +241,7 @@ Work in progress by Robbie M Parks.
 [zips_tmean.R](prog/02_grid_county_intersection/zips_tmean.R) - processing tmean by ZIP Code\
 [zips_ppt.R](prog/02_grid_county_intersection/zips_ppt.R) - processing ppt by ZIP Code
 
-[ct_tmean.R](prog/02_grid_county_intersection/ct_tmean.R) - processing tmean by census tract\
-[ct_ppt.R](prog/02_grid_county_intersection/ct_ppt.R) - processing ppt by census tract
+[census_tract_tmean.R](prog/02_grid_county_intersection/census_tract_tmean.R) - processing tmean by census tract\
+[census_tract_ppt.R](prog/02_grid_county_intersection/census_tract_ppt.R) - processing ppt by census tract
 
 [processing_code.R](prog/02_grid_county_intersection/processing_code.R) - does the heavy lifting called in by bash files for either FIPS or ZIP Code
