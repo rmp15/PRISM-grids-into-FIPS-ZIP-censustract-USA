@@ -124,7 +124,14 @@ if(time.res=='daily'){
         }
         
         # perform over entire of mainland USA (FIPS or ZIP) or chosen state (CENSUS TRACT)
-        weighted.area.national  = extract(x=raster.full,weights = TRUE, normalizeWeights=TRUE,y=us.main,fun=mean,df=TRUE,na.rm=TRUE)
+        weighted.area.national  = extract(x=raster.full, # raster (x) to extract from
+                                          y=us.main,  # shapefile (y) to overlay and take values forward 
+                                          weights = TRUE, # calculate weights used for averaging (area-weighted mean)
+                                          normalizeWeights=TRUE, # normalize weights to always add up to 1 if, say, some of the shapefile is not covered by a raster 
+                                          fun=mean, # take the mean of the values
+                                          df=TRUE, # return as a dataframe object
+                                          na.rm=TRUE # remove NAs before function (mean) applied so that NAs aren't returned
+                                          )
         
         # create some unique ids for each area
         if(space.res=='fips'){weighted.area.national = data.frame(code=paste0(us.main$STATEFP,us.main$COUNTYFP), weighted.area.national[,2])}
