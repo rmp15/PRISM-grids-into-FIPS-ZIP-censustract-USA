@@ -65,11 +65,7 @@ prog/01_bash/*
 prog/03_check_output/*
 
 # wbgt processed data
-**/wbgtmax
+#**/wbgtmax
 
 # all the csv files
 *.csv
-
-
-
-
