@@ -30,8 +30,8 @@ ifelse(!dir.exists(dir.output), dir.create(dir.output, recursive = T), FALSE)
 
 # load shapefiles of either FIPS or ZIP Codes (ZCTAs) or Census Tracts
 if(space.res=='fips'){
-    # load shapefile of entire United States from https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Counties+%28and+equivalent%29
-    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k") # TO UPDATE TO 2021
+    # load shapefile of entire United States from https://www.census.gov/geographies/mapping-files/2015/geo/carto-boundary-file.html
+    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
     
     # remove non-mainland territories (assuming it's for entire mainland US)
     us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
