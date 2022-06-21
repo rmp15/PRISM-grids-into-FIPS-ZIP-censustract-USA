@@ -17,7 +17,7 @@ Work in progress by Robbie M Parks.
 
 ## Data
 
-### County (FIPS) (using [shapefiles](https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2021&layergroup=Counties+%28and+equivalent%29))
+### County (FIPS) (using [shapefiles](https://www.census.gov/geographies/mapping-files/2015/geo/carto-boundary-file.html))
 
 #### Mean daily temperature (tmean; °C) 
 
