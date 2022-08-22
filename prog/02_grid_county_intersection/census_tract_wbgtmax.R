@@ -22,11 +22,11 @@ seed.grid = expand.grid(state=states, year=years_total_wbgt)
 chosen.row <- seed.grid[seed.arg,]
 
 # year of interest
-year = as.numeric(chosen.row[1,1])
+year = as.numeric(chosen.row[1,2])
 dname = 'wbgtmax'
 time.res = 'daily'
 space.res = 'ct'
-state = as.character(chosen.row[1,2])
+state = as.character(chosen.row[1,1])
   
 # process from grids into shapefiles
 source('prog/02_grid_county_intersection/processing_code.R')
