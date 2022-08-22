@@ -1,7 +1,7 @@
 #!/bin/sh
 #PBS -l walltime=24:00:00
 #PBS -l select=1:ncpus=4:mem=20gb
-#PBS -J 2019-2020
+#PBS -J 2021-2022
 
 cd $HOME/git/PRISM-grids-into-FIPS-ZIP-censustract-USA/
 module load anaconda3/personal
@@ -9,4 +9,4 @@ R --slave --args ${PBS_ARRAY_INDEX} < $HOME/git/PRISM-grids-into-FIPS-ZIP-census
 
 # to run type
 # qsub -q med-bio fips_wbgtmax.run
-# THIS WILL RUN ALL CHOSEN YEARS FOR PRISM PROCESSING
+# THIS WILL RUN ALL CHOSEN ARGUMENTS FOR PRISM PROCESSING

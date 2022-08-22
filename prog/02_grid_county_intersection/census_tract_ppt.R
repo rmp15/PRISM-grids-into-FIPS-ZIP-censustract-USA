@@ -18,7 +18,7 @@ seed.arg <- as.numeric(args[1])
 
 # create grid of years an countries
 source(paste0(project.folder,'data/objects/objects.R'))
-seed.grid = expand.grid(year=years_total_ppt,state=states)
+seed.grid = expand.grid(state=states, year=years_total_ppt)
 chosen.row <- seed.grid[seed.arg,]
 
 # year of interest

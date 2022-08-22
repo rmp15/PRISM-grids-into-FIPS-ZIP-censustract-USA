@@ -2,9 +2,9 @@
 years_current <- c(2021)
 
 # total years of analysis
-years_total_ppt   <- c(1981:2020)
-years_total_tmean <- c(1981:2020)
-years_total_wbgt  <- c(1982:2020)
+years_total_ppt   <- c(1981:2021)
+years_total_tmean <- c(1981:2021)
+years_total_wbgt  <- c(1982:2021)
 
 # list of locations currently including in analysis
 states <- c('01',  # Alabama
