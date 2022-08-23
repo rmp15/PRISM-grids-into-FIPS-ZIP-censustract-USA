@@ -9,7 +9,7 @@ In Python it is [easy to load RDS files](https://stackoverflow.com/questions/409
 
 Note that ZIP Code throughout is actually [ZIP Code Tablulation Area (ZCTA)](https://en.wikipedia.org/wiki/ZIP_Code_Tabulation_Area), which was developed to overcome the difficulties in precisely defining the land area covered by each ZIP Code. Defining the extent of an area is necessary in order to tabulate census data for that area.
 
-Current data covers during 1981-2020.
+Current data covers during 1981-2021.
 
 Work in progress by Robbie M Parks.
 
@@ -76,6 +76,7 @@ Work in progress by Robbie M Parks.
 [Vermont](output/zip/50/tmean),
 [Virginia](output/zip/51/tmean),
 [Washington](output/zip/53/tmean),
+[Washington D.C.](output/zip/11/tmean),
 [West Virginia](output/zip/54/tmean),
 [Wisconsin](output/zip/55/tmean),
 [Wyoming](output/zip/56/tmean).
@@ -127,6 +128,7 @@ Work in progress by Robbie M Parks.
 [Vermont](output/zip/50/ppt),
 [Virginia](output/zip/51/ppt),
 [Washington](output/zip/53/ppt),
+[Washington D.C.](output/zip/11/ppt),
 [West Virginia](output/zip/54/ppt),
 [Wisconsin](output/zip/55/ppt),
 [Wyoming](output/zip/56/ppt).
@@ -180,6 +182,7 @@ Work in progress by Robbie M Parks.
 [Vermont](output/ct/50/tmean),
 [Virginia](output/ct/51/tmean),
 [Washington](output/ct/53/tmean),
+[Washington D.C.](output/ct/11/tmean),
 [West Virginia](output/ct/54/tmean),
 [Wisconsin](output/ct/55/tmean),
 [Wyoming](output/ct/56/tmean).
@@ -231,6 +234,7 @@ Work in progress by Robbie M Parks.
 [Vermont](output/ct/50/ppt),
 [Virginia](output/ct/51/ppt),
 [Washington](output/ct/53/ppt),
+[Washington D.C.](output/ct/11/ppt),
 [West Virginia](output/ct/54/ppt),
 [Wisconsin](output/ct/55/ppt),
 [Wyoming](output/ct/56/ppt).
