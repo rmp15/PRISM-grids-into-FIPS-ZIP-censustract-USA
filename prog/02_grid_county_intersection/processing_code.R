@@ -19,16 +19,18 @@ library(zoo)
 if(space.res=='fips'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
 if(space.res=='zip'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res, ' ', state))}
 if(space.res=='ct'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res, ' ', state))}
+if(space.res=='prison'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
 
 # create directory to place output files into
 dir.output = paste0(project.folder,"output/")
 if(space.res=='zip'){dir.output=paste0(dir.output,'zip/',state,'/')}
 if(space.res=='fips'){dir.output=paste0(dir.output,'fips/')}
 if(space.res=='ct'){dir.output=paste0(dir.output,'ct/',state,'/')}
+if(space.res=='prison'){dir.output=paste0(dir.output,'prison/')}
 dir.output=paste0(dir.output,dname,'/')
 ifelse(!dir.exists(dir.output), dir.create(dir.output, recursive = T), FALSE)
 
-# load shapefiles of either FIPS or ZIP Codes (ZCTAs) or Census Tracts
+# load shapefiles of either FIPS or ZIP Codes (ZCTAs), Census Tracts or Prisons
 if(space.res=='fips'){
     # load shapefile of entire United States from https://www.census.gov/geographies/mapping-files/2015/geo/carto-boundary-file.html
     us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
@@ -85,6 +87,14 @@ if(space.res=='ct'){
     
     us.main = us.national
 }
+if(space.res=='prison'){
+  # load shapefile of entire United States from https://www.census.gov/geographies/mapping-files/2015/geo/carto-boundary-file.html
+  us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/Prison_Boundaries/"),layer="Prison_Boundaries")
+  us.national$STATEFP = substr(us.national$COUNTYFIPS,1,2)
+  
+  # remove non-mainland territories (assuming it's for entire mainland US)
+  us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78","NO"),]
+}
 
 # get projection of shapefile
 original.proj = proj4string(us.main)
@@ -137,7 +147,8 @@ if(time.res=='daily'){
         if(space.res=='fips'){weighted.area.national = data.frame(code=paste0(us.main$STATEFP,us.main$COUNTYFP), weighted.area.national[,2])}
         if(space.res=='zip'){weighted.area.national = data.frame(code=us.main$ZCTA5CE10, weighted.area.national[,2])}
         if(space.res=='ct'){weighted.area.national = data.frame(code=us.main$GEOID, weighted.area.national[,2])}
-
+        if(space.res=='prison'){weighted.area.national = data.frame(code=us.main$FID, weighted.area.national[,2])}
+        
         # order by the unique id area code
         weighted.area.national = weighted.area.national[order(weighted.area.national$code),]
         
@@ -148,6 +159,7 @@ if(time.res=='daily'){
         if(space.res=='fips'){names(weighted.area.national) = c('fips',dname)}
         if(space.res=='zip'){names(weighted.area.national) = c('zcta',dname)}
         if(space.res=='ct'){names(weighted.area.national) = c('ct_id',dname)}
+        if(space.res=='prison'){names(weighted.area.national) = c('prison_id',dname)}
         
         # add date details
         weighted.area.national$date = format(as.Date(date), "%d/%m/%Y")
@@ -175,4 +187,9 @@ if(space.res=='ct'){
     saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_census_tract_',dname,'_',time.res,'_',as.character(year),'.rds'))
     write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_census_tract_',dname,'_',time.res,'_',as.character(year),'.csv'),
               row.names = F)
+}
+if(space.res=='prison'){
+  saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_prison_',dname,'_',time.res,'_',as.character(year),'.rds'))
+  write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_prison_',dname,'_',time.res,'_',as.character(year),'.csv'),
+            row.names = F)
 }
