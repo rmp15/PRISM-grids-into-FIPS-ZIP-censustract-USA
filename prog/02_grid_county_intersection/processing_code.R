@@ -99,7 +99,8 @@ if(space.res=='prison'){
     # make projection match the FIPS one
     us.fips.proj = proj4string(readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k"))
     us.main = spTransform(us.main, CRS(us.fips.proj))
-    
+    if(inherits(us.main, "try-error")){next}
+    us.main = spTransform(us.main, CRS(us.fips.proj))
 }
 
 # get projection of shapefile
