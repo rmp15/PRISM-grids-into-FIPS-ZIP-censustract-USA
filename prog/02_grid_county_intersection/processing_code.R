@@ -150,11 +150,21 @@ if(time.res=='daily'){
         }
         if(dname == 'wbgtmax'){ 
             raster.full = raster(paste0('~/data/climate/prism/tif/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'1231_tif/PRISM_',dname,'_stable_4kmD2_',year,day.month,'.tif'))
-            raster.full = projectRaster(raster.full, crs=original.proj)
+            
+            # if it's for prisons the raster and shape file are have the same projection, otherwise reproject
+            if(space.res!='prison'){
+              raster.full = projectRaster(raster.full, crs=original.proj)
+            }
+            
             raster.full = reclassify(raster.full, cbind(-Inf, -1000, NA), right=FALSE) # get rid of huge negative values if it's wbgtmax
+            
+            # save an example plot for a specific date
+            if(year==2000 & day.month=='0101'){
+              pdf(paste0('~/data/climate/prism/tif/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'1231_tif/PRISM_',dname,'_stable_4kmD2_',year,day.month,'_',space.res,'.pdf'))
+              plot(raster.full); plot(us.main,add=T)
+              dev.off()
+            }
         }
-        
-
         
         # perform over entire of mainland USA (FIPS or ZIP) or chosen state (CENSUS TRACT)
         weighted.area.national  = extract(x=raster.full, # raster (x) to extract from
