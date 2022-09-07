@@ -13,7 +13,7 @@ rm(list=ls())
 args = commandArgs(trailingOnly=TRUE)
 
 # year of interest
-year = as.numeric(args[1]) # 2000
+year = as.numeric(args[1])
 dname = 'tmean'
 time.res = 'daily'
 space.res = 'prison'
