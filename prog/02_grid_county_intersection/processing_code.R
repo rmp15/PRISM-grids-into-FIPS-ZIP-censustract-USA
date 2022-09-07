@@ -88,12 +88,18 @@ if(space.res=='ct'){
     us.main = us.national
 }
 if(space.res=='prison'){
-  # load shapefile of entire United States from https://www.census.gov/geographies/mapping-files/2015/geo/carto-boundary-file.html
-  us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/Prison_Boundaries/"),layer="Prison_Boundaries")
-  us.national$STATEFP = substr(us.national$COUNTYFIPS,1,2)
-  
-  # remove non-mainland territories (assuming it's for entire mainland US)
-  us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78","NO"),]
+    # load shapefile of all prisons in United States from https://hifld-geoplatform.opendata.arcgis.com/datasets/geoplatform::prison-boundaries/about
+    # projection of this shape file seems to be https://epsg.io/3857
+    us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/Prison_Boundaries/"),layer="Prison_Boundaries")
+    us.national$STATEFP = substr(us.national$COUNTYFIPS,1,2)
+    
+    # remove non-mainland territories (assuming it's for entire mainland US) 
+    us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78","NO"),]
+
+    # make projection match the FIPS one
+    us.fips.proj = proj4string(readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k"))
+    us.main = spTransform(us.main, CRS(us.fips.proj))
+    
 }
 
 # get projection of shapefile
@@ -132,6 +138,9 @@ if(time.res=='daily'){
             raster.full = projectRaster(raster.full, crs=original.proj)
             raster.full = reclassify(raster.full, cbind(-Inf, -1000, NA), right=FALSE) # get rid of huge negative values if it's wbgtmax
         }
+        pdf('~/a.pdf')
+        plot(raster.full); plot(us.main,add=T)
+        dev.off()
         
         # perform over entire of mainland USA (FIPS or ZIP) or chosen state (CENSUS TRACT)
         weighted.area.national  = extract(x=raster.full, # raster (x) to extract from
