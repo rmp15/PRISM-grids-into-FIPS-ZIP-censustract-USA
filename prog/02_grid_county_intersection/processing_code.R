@@ -14,6 +14,7 @@ library(sp)
 library(plyr)
 library(graticule)
 library(zoo)
+library
 
 # print message detailing what is being processed
 if(space.res=='fips'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
@@ -98,9 +99,12 @@ if(space.res=='prison'){
 
     # make projection match the FIPS one
     us.fips.proj = proj4string(readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k"))
-    us.main = try(spTransform(us.main, CRS(us.fips.proj)))
-    if(inherits(us.main, "try-error")){next}
-    us.main = spTransform(us.main, CRS(us.fips.proj))
+    for(i in seq(2)){
+      us.main = try(spTransform(us.main, CRS(us.fips.proj)))
+      if(inherits(us.main, "try-error")){next}
+      us.main = spTransform(us.main, CRS(us.fips.proj))
+    }
+
 }
 
 # get projection of shapefile
