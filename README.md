@@ -16,7 +16,7 @@ Work in progress by Robbie M Parks.
 
 2018...2022... and beyond.
 
-## Data {#data}
+## Data
 
 ### County (FIPS) (using [shapefiles](https://www.census.gov/geographies/mapping-files/2015/geo/carto-boundary-file.html))
 
