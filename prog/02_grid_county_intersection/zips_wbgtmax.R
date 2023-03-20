@@ -13,13 +13,13 @@ rm(list=ls())
 project.folder = paste0(print(here::here()),'/')
 
 # arguments from Rscript
-args <- commandArgs(trailingOnly=TRUE)
-seed.arg <- as.numeric(args[1])
+args = commandArgs(trailingOnly=TRUE)
+seed.arg = as.numeric(args[1])
 
 # create grid of years an countries
 source(paste0(project.folder,'data/objects/objects.R'))
 seed.grid = expand.grid(state=states, year=years_total_wbgt)
-chosen.row <- seed.grid[seed.arg,]
+chosen.row = seed.grid[seed.arg,]
 
 # year of interest
 year = as.numeric(chosen.row[1,2])
