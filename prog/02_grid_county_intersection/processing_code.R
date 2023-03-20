@@ -144,9 +144,10 @@ if(time.res=='daily'){
         day = format(as.Date(date), "%d")
         month = format(as.Date(date), "%m")
         day.month = paste0(month,day)
+        day.month.rh = paste0(month,'-',day)
         
         # load raster for relevant date
-        if(dname!='wbgtmax'){
+        if(!(dname%in%c('wbgtmax','rhmean'))){
             raster.full = raster(paste0('~/data/climate/prism/bil/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'1231_bil/PRISM_',dname,'_stable_4kmD2_',year,day.month,'_bil.bil'))
             raster.full = projectRaster(raster.full, crs=original.proj)
             
@@ -174,7 +175,14 @@ if(time.res=='daily'){
               dev.off()
             }
         }
-        
+        if(dname =='rhmean'){
+          raster.full = raster(paste0('~/data/climate/prism/PRISM_RHmean_1999_2012/PRISM_rhmean_stable_4kmD2_',year,'-',day.month.rh,'.tif'))
+          
+          # if it's for prisons the raster and shape file are have the same projection, otherwise reproject
+          # if(space.res!='prison'){
+          #   raster.full = projectRaster(raster.full, crs=original.proj)
+          # }
+        }
         # perform over entire of mainland USA (FIPS or ZIP) or chosen state (CENSUS TRACT)
         weighted.area.national  = extract(x=raster.full, # raster (x) to extract from
                                           y=us.main,  # shapefile (y) to overlay and take values forward 

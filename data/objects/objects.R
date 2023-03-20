@@ -5,6 +5,7 @@ years_current = c(2021)
 years_total_ppt   = c(1981:2021)
 years_total_tmean = c(1981:2021)
 years_total_wbgt  = c(1981:2021)
+years_total_rhmean = c(1999:2012)
 
 # list of locations currently including in analysis
 states = c('01',  # Alabama
