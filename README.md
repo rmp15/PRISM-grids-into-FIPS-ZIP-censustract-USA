@@ -12,7 +12,7 @@ Note that ZIP Code throughout is actually [ZIP Code Tablulation Area (ZCTA)](htt
 
 Current data covers during 1981-2021.
 
-Work in progress by Robbie M Parks.
+Work in progress by Robbie M Parks, Victoria D Lynch
 
 2018...2022... and beyond.
 
