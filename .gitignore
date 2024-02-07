@@ -65,7 +65,7 @@ prog/01_bash/*
 prog/03_check_output/*
 
 # mapping prog giles
-prog/04_maps/map_wbgtmax_data_example*
+# prog/04_maps/map_wbgtmax_data_example*
 
 # wbgt processed data
 **/wbgtmax

@@ -1,0 +1,196 @@
+---
+title: "Map WBGT data in NYS example"
+output: html_document
+---
+
+# Clear environment and declare root directory
+```{r}
+rm(list=ls())
+
+project.folder = paste0(print(here::here()),'/')
+```
+
+# Load packages
+```{r}
+library(maptools)
+library(mapproj)
+library(rgeos)
+library(rgdal)
+library(RColorBrewer)
+library(ggplot2)
+library(raster)
+library(sp)
+library(plyr)
+library(graticule)
+library(zoo)
+library(dplyr)
+library(MetBrewer)
+```
+
+# Details of results to load
+```{r}
+year_1 = 1982
+year_2 = 2020
+dname = 'wbgtmax'
+time.res = 'daily'
+space.res = 'fips'
+state='36'
+```
+
+# File input and output file structure
+```{r}
+# input directory
+dir.input = paste0(project.folder,"output/")
+if(space.res=='zip'){dir.input=paste0(dir.input,'zip/',state,'/',dname,'/')}
+if(space.res=='fips'){dir.input=paste0(dir.input,'fips/',dname,'/')}
+if(space.res=='ct'){dir.input=paste0(dir.input,'ct/',state,'/',dname,'/')}
+ifelse(!dir.exists(dir.input), dir.create(dir.input), FALSE)
+
+# output directory
+dir.output = paste0(project.folder,paste0('maps/',dname,'/'))
+ifelse(!dir.exists(dir.output), dir.create(dir.output,recursive=TRUE), FALSE)
+```
+
+# Load data
+```{r}
+if(space.res=='fips'){
+  dat_1 = readRDS(paste0(dir.input,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year_1),'.rds'))  
+  dat_2 = readRDS(paste0(dir.input,'weighted_area_raster_fips_',dname,'_',time.res,'_',as.character(year_2),'.rds'))
+}
+if(space.res=='zip'){
+  dat_1 = readRDS(paste0(dir.input,'weighted_area_raster_zip_',state,'_',dname,'_',time.res,'_',as.character(year_1),'.rds'))
+  dat_2 = readRDS(paste0(dir.input,'weighted_area_raster_zip_',state,'_',dname,'_',time.res,'_',as.character(year_2),'.rds'))
+}
+if(space.res=='ct'){
+  dat_1 = readRDS(paste0(dir.input,'weighted_area_raster_census_tract_',dname,'_',time.res,'_',as.character(year_1),'.rds'))
+  dat_2 = readRDS(paste0(dir.input,'weighted_area_raster_census_tract_',dname,'_',time.res,'_',as.character(year_2),'.rds'))
+}
+```
+
+# summarise by number of days over a threshold (>30°C) in the selected file
+```{r}
+threshold = 28
+  
+dat_threshold_1 = dat_1 %>%
+  mutate(count=ifelse(get(dname)>threshold,1,0)) %>%
+  group_by(fips) %>%
+  tally(count) %>%
+  rename(count=n) %>%
+  mutate(fips=as.character(fips))
+
+dat_threshold_2 = dat_2 %>%
+  mutate(count=ifelse(get(dname)>threshold,1,0)) %>%
+  group_by(fips) %>%
+  tally(count) %>%
+  rename(count=n) %>%
+  mutate(fips=as.character(fips))
+```
+
+# histograms of summarised data for sanity check (not pretty but does the job)
+```{r}
+hist(dat_threshold_1$count)
+hist(dat_threshold_2$count)
+```
+
+# Prepare map structure
+```{r}
+# for map theme to plot in ggplot
+theme_map <- function(base_size=15, base_family=""){
+    require(grid)
+    theme_bw(base_size=base_size,base_family=base_family) %+replace%
+    theme(axis.line=element_blank(),
+    axis.text=element_blank(),
+    axis.ticks=element_blank(),
+    axis.title=element_blank(),
+    panel.background=element_blank(),
+    panel.border=element_blank(),
+    panel.grid=element_blank(),
+    panel.margin=unit(0,"lines"),
+    plot.background=element_blank(),
+    legend.position = 'bottom'
+    )
+}
+
+# load shapefile of entire United States by county
+us.national = readOGR(dsn=paste0(project.folder,"data/shapefiles/fips/cb_2015_us_county_500k"),layer="cb_2015_us_county_500k")
+
+# reproject shapefile
+us.national = spTransform(us.national, CRS("+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs"))
+
+# remove non-mainland territories (assuming it's for entire mainland US)
+us.main = us.national[!us.national$STATEFP %in% c("02","15","60","66","69","71","72","78"),]
+
+# fortify to prepare for plotting in ggplot
+map = fortify(us.main)
+
+# extract data from shapefile
+us.main@data$id = rownames(us.main@data)
+shapefile.data = us.main@data
+
+# merge selected data to map_create dataframe for colouring of ggplot
+USA.df = merge(map, shapefile.data, by='id')
+# USA.df$GEOID = as.integer(as.character(USA.df$GEOID))
+```
+
+# Prepare summary maps
+```{r}
+# merge map with threshold values
+USA.df.merged.threshold_1 = merge(USA.df,dat_threshold_1,by.x='GEOID',by.y='fips',all.x=TRUE)
+USA.df.merged.threshold_1 = with(USA.df.merged.threshold_1, USA.df.merged.threshold_1[order(id,order),])
+
+USA.df.merged.threshold_2 = merge(USA.df,dat_threshold_2,by.x='GEOID',by.y='fips',all.x=TRUE)
+USA.df.merged.threshold_2 = with(USA.df.merged.threshold_2, USA.df.merged.threshold_2[order(id,order),])
+```
+
+# Prepare colors and legends of maps
+```{r}
+if(dname=='wbgtmax'){
+  legend.threshold = paste0('WBGT: Number of days over ', threshold ,'°C')
+  colors.threshold = met.brewer(name='Tam') # Also OKeeffe2
+  upper_limit = ceiling(max(max(dat_threshold_1$count),max(dat_threshold_2$count)))
+}
+```
+
+# Plot threshold map 1
+```{r}
+plot.threshold_1 = ggplot() +
+    geom_polygon(data=USA.df.merged.threshold_1,aes(x=long,y=lat,group=group,fill=count),color='black',size=0.01) +
+    guides(fill = guide_colorbar(direction = "horizontal", title.position="left",barwidth = 10, 
+                                 barheight = 1,title.vjust = 0.8, title = legend.threshold),legend.text=element_text(size=10)) +
+  scale_fill_gradientn(colors = colors.threshold, limits = c(0,upper_limit)) +
+    coord_fixed() + xlab('') + ylab('') + theme_bw() +
+    theme(panel.grid.major = element_blank(),
+        axis.text.x = element_text(angle=90), axis.ticks.x=element_blank(),legend.text=element_text(size=20),
+        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),
+        panel.border = element_rect(colour = "black"),strip.background = element_blank(),legend.justification='center',
+        legend.position = 'bottom', legend.background = element_rect(fill="white", size=.5, linetype="dotted")) +
+    theme_map()
+
+pdf(paste0(dir.output,'map_annual_threshold_over_',threshold,'_',state,'_',dname,'_',time.res,'_',as.character(year_1),'.pdf'),paper='a4r',height=0,width=0)
+print(plot.threshold_1)
+dev.off()
+
+plot.threshold_1
+```
+
+# Plot threshold map 2
+```{r}
+plot.threshold_2 = ggplot() +
+    geom_polygon(data=USA.df.merged.threshold_2,aes(x=long,y=lat,group=group,fill=count),color='black',size=0.01) +
+    guides(fill = guide_colorbar(direction = "horizontal", title.position="left",barwidth = 10, 
+                                 barheight = 1,title.vjust = 0.8, title = legend.threshold),legend.text=element_text(size=10)) +
+  scale_fill_gradientn(colors = colors.threshold, limits = c(0,upper_limit)) +
+    coord_fixed() + xlab('') + ylab('') + theme_bw() +
+    theme(panel.grid.major = element_blank(),
+        axis.text.x = element_text(angle=90), axis.ticks.x=element_blank(),legend.text=element_text(size=20),
+        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),
+        panel.border = element_rect(colour = "black"),strip.background = element_blank(),legend.justification='center',
+        legend.position = 'bottom', legend.background = element_rect(fill="white", size=.5, linetype="dotted")) +
+    theme_map()
+
+pdf(paste0(dir.output,'map_annual_threshold_over_',threshold,'_',state,'_',dname,'_',time.res,'_',as.character(year_2),'.pdf'),paper='a4r',height=0,width=0)
+print(plot.threshold_2)
+dev.off()
+
+plot.threshold_2
+```

@@ -1,11 +1,11 @@
 # years to run current analysis for
-years_current = c(2021)
+years_current = c(2022)
 
 # total years of analysis
-years_total_ppt   = c(1981:2021)
-years_total_tmean = c(1981:2021)
-years_total_wbgt  = c(1981:2021)
-years_total_rhmean = c(1999:2012)
+years_total_ppt   = c(1981:2022)
+years_total_tmean = c(1981:2022)
+years_total_wbgt  = c(1981:2022)
+years_total_rhmean = c(1999:2022)
 
 # list of locations currently including in analysis
 states = c('01',  # Alabama
