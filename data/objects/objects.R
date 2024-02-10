@@ -1,5 +1,5 @@
 # years to run current analysis for
-years_current = c(2022)
+years_current = c(2023)
 
 # total years of analysis
 years_total_ppt   = c(1981:2022)

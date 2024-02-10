@@ -1,3 +1,6 @@
+# what is the latest year of data available?
+year_latest = 2023
+
 # declare root directory, folder locations and load essential stuff
 project.folder = paste0(print(here::here()),'/')
 
@@ -131,6 +134,10 @@ if(time.res=='annual'){
 if(time.res=='daily'){
     # loop through each raster file for each day and summarise
     dates = seq(as.Date(paste0('0101',year),format="%d%m%Y"), as.Date(paste0('3112',year),format="%d%m%Y"), by=1)
+    # do just for half the year for brand new year data
+    if(year==year_latest){
+      dates = seq(as.Date(paste0('0101',year),format="%d%m%Y"), as.Date(paste0('3107',year),format="%d%m%Y"), by=1)
+    }
     
     # empty dataframe to load summarised national daily values into
     weighted.area.national.total = data.frame()
@@ -148,7 +155,12 @@ if(time.res=='daily'){
         
         # load raster for relevant date
         if(!(dname%in%c('wbgtmax','rhmean'))){
+          if(year!=year_latest){
             raster.full = raster(paste0('~/data/climate/prism/bil/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'1231_bil/PRISM_',dname,'_stable_4kmD2_',year,day.month,'_bil.bil'))
+          }
+          if(year==year_latest){
+            raster.full = raster(paste0('~/data/climate/prism/bil/PRISM_',dname,'_stable_4kmD2_',year,'0101_',year,'0731_bil/PRISM_',dname,'_stable_4kmD2_',year,day.month,'_bil.bil'))
+          }
             raster.full = projectRaster(raster.full, crs=original.proj)
             
             # save an example plot for a specific date
