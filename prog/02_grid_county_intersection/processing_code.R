@@ -25,6 +25,7 @@ if(space.res=='zip'){print(paste0('processing ',year, ' ' , dname, ' ', time.res
 if(space.res=='ct'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res, ' ', state))}
 if(space.res=='ct_2010'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res, ' ', state))}
 if(space.res=='prison'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
+if(space.res=='native'){print(paste0('processing ',year, ' ' , dname, ' ', time.res, ' ' , space.res))}
 
 # create directory to place output files into
 dir.output = paste0(project.folder,"output/")
@@ -33,6 +34,7 @@ if(space.res=='fips'){dir.output=paste0(dir.output,'fips/')}
 if(space.res=='ct'){dir.output=paste0(dir.output,'ct/',state,'/')}
 if(space.res=='ct_2010'){dir.output=paste0(dir.output,'ct_2010/',state,'/')}
 if(space.res=='prison'){dir.output=paste0(dir.output,'prison/')}
+if(space.res=='native'){dir.output=paste0(dir.output,'native/')}
 dir.output=paste0(dir.output,dname,'/')
 ifelse(!dir.exists(dir.output), dir.create(dir.output, recursive = T), FALSE)
 
@@ -119,6 +121,10 @@ if(space.res=='prison'){
     # us.main = spTransform(us.main, CRS("+proj=longlat +datum=NAD83 +no_defs"))
     # us.main = spTransform(us.main, CRS(us.fips.proj))
     
+}
+if(space.res=='native'){
+  # load shapefile of entire United States from https://www.census.gov/geographies/mapping-files/2015/geo/carto-boundary-file.html
+  us.main = readOGR(dsn=paste0(project.folder,"data/shapefiles/native/tl_2020_us_aitsn"),layer="tl_2020_us_aitsn")
 }
 
 # get projection of shapefile
@@ -211,6 +217,7 @@ if(time.res=='daily'){
         if(space.res=='ct'){weighted.area.national = data.frame(code=us.main$GEOID, weighted.area.national[,2])}
         if(space.res=='ct_2010'){weighted.area.national = data.frame(code=us.main$GEOID10, weighted.area.national[,2])}
         if(space.res=='prison'){weighted.area.national = data.frame(code=us.main$FID, weighted.area.national[,2])}
+        if(space.res=='native'){weighted.area.national = data.frame(code=us.main$GEOID, weighted.area.national[,2])}
         
         # order by the unique id area code
         weighted.area.national = weighted.area.national[order(weighted.area.national$code),]
@@ -224,6 +231,7 @@ if(time.res=='daily'){
         if(space.res=='ct'){names(weighted.area.national) = c('ct_id',dname)}
         if(space.res=='ct_2010'){names(weighted.area.national) = c('ct_id',dname)}
         if(space.res=='prison'){names(weighted.area.national) = c('prison_id',dname)}
+        if(space.res=='native'){names(weighted.area.national) = c('native_id',dname)}
         
         # add date details
         weighted.area.national$date = format(as.Date(date), "%d/%m/%Y")
@@ -260,5 +268,10 @@ if(space.res=='ct_2010'){
 if(space.res=='prison'){
   saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_prison_',dname,'_',time.res,'_',as.character(year),'.rds'))
   write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_prison_',dname,'_',time.res,'_',as.character(year),'.csv'),
+            row.names = F)
+}
+if(space.res=='native'){
+  saveRDS(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_native_',dname,'_',time.res,'_',as.character(year),'.rds'))
+  write.csv(weighted.area.national.total,paste0(dir.output,'weighted_area_raster_native_',dname,'_',time.res,'_',as.character(year),'.csv'),
             row.names = F)
 }
