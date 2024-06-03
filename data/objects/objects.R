@@ -4,6 +4,9 @@ years_current = c(2023)
 # total years of analysis
 years_total_ppt   = c(1981:2022)
 years_total_tmean = c(1981:2022)
+years_total_tmin = c(1981:2022)
+years_total_tmax = c(1981:2022)
+years_total_tdmean = c(1981:2022)
 years_total_wbgt  = c(1981:2022)
 years_total_rhmean = c(1999:2022)
 

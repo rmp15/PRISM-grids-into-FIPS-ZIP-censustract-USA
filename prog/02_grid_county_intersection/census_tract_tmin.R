@@ -18,7 +18,7 @@ seed.arg = as.numeric(args[1])
 
 # create grid of years an countries
 source(paste0(project.folder,'data/objects/objects.R'))
-seed.grid = expand.grid(state=states, year=years_total_tmean)
+seed.grid = expand.grid(state=states, year=years_total_tmin)
 chosen.row = seed.grid[seed.arg,]
 
 # year of interest
