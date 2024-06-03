@@ -8,5 +8,5 @@ cd $HOME/git/PRISM-grids-into-FIPS-ZIP-censustract-USA/
 R --slave --args ${PBS_ARRAY_INDEX} < $HOME/git/PRISM-grids-into-FIPS-ZIP-censustract-USA/prog/02_grid_county_intersection/census_tract_tmin.R
 
 # to run type
-# qsub -q med-bio census_tract_tmean.run
+# qsub -q med-bio census_tract_tmin.run
 # THIS WILL RUN ALL CHOSEN ARGUMENTS FOR PRISM PROCESSING
