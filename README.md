@@ -10,11 +10,11 @@ In Python it is [easy to load RDS files](https://stackoverflow.com/questions/409
 
 Note that ZIP Code throughout is actually [ZIP Code Tablulation Area (ZCTA)](https://en.wikipedia.org/wiki/ZIP_Code_Tabulation_Area), which was developed to overcome the difficulties in precisely defining the land area covered by each ZIP Code. Defining the extent of an area is necessary in order to tabulate census data for that area.
 
-Current data covers during 1981-2021.
+Current data covers during 1981-2023.
 
 Work in progress by Robbie M Parks, Victoria D Lynch
 
-2018...2022... and beyond.
+2018...2025... and beyond.
 
 ## Data
 
