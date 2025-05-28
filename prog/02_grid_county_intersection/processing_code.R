@@ -1,5 +1,5 @@
 # what is the latest year of data available?
-year_latest = 2023
+year_latest = 2024
 
 # declare root directory, folder locations and load essential stuff
 project.folder = paste0(print(here::here()),'/')
